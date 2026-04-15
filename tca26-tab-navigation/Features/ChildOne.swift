@@ -21,11 +21,11 @@ import SwiftUI
         }
       case .navigateToChild2:
         store.addTask {
-          try store.post(key: NavigationEvent.self, value: .child1(.init(title: "2 from 1")))
+          try store.post(key: NavigationEvent.self, value: .child2(.init(title: "2 from 1")))
         }
       case .navigateToChild3:
         store.addTask {
-          try store.post(key: NavigationEvent.self, value: .child1(.init(title: "3 from 1")))
+          try store.post(key: NavigationEvent.self, value: .child3(.init(title: "3 from 1")))
         }
       }
     }
@@ -57,7 +57,7 @@ struct ChildOneView: View {
       Button {
         store.send(.navigateToChild3)
       } label: {
-        Text("Navigate to child 2")
+        Text("Navigate to child 3")
       }
     }
     .scrollContentBackground(.hidden)

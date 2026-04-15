@@ -23,14 +23,17 @@ enum AppTab {
     var home: TabNavigation<ChildOne>.State
     var explore: TabNavigation<ChildTwo>.State
     var search: TabNavigation<ChildThree>.State
+    var modal: Modal.State?
   }
-  
+
   enum Action {
     case home(TabNavigation<ChildOne>.Action)
     case explore(TabNavigation<ChildTwo>.Action)
     case search(TabNavigation<ChildThree>.Action)
+    case modal(Modal.Action)
+    case accessoryTapped
   }
-  
+
   var body: some Feature {
     let _ = Self._logChanges()
     Scope(state: \.home, action: \.home) {
@@ -46,6 +49,28 @@ enum AppTab {
     Scope(state: \.search, action: \.search) {
       TabNavigation {
         ChildThree()
+      }
+    }
+    Update { state, action in
+      switch action {
+      case .accessoryTapped:
+        state.modal = Modal.State(title: "Modal")
+      default:
+        break
+      }
+    }
+    .ifLet(\.modal, action: \.modal) {
+      Modal()
+    }
+    .onEvent(NavigationEvent.self, consume: true) { path, state in
+      state.modal = nil
+      switch state.tab {
+      case .home:
+        state.home.path.append(path)
+      case .explore:
+        state.explore.path.append(path)
+      case .search:
+        state.search.path.append(path)
       }
     }
   }
@@ -76,6 +101,16 @@ struct AppRootView: View {
       } label: {
         Label("Search", systemImage: "magnifyingglass")
       }
+    }
+    .tabViewBottomAccessory {
+      Button {
+        store.send(.accessoryTapped)
+      } label: {
+        Text("Modal")
+      }
+    }
+    .sheet(item: $store.scope(state: \.modal, action: \.modal)) { modalStore in
+      ModalView(store: modalStore)
     }
   }
 }

@@ -26,7 +26,7 @@ import SwiftUI
     .forEach(\.path, action: \.path, dismissStyle: .stack) {
       AppPath.body
     }
-    .onEvent(NavigationEvent.self) { value, state in
+    .onEvent(NavigationEvent.self, consume: true) { value, state in
       state.path.append(value)
     }
   }
