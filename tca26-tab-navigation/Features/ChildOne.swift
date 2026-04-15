@@ -51,7 +51,7 @@ struct ChildOneView: View {
       Button {
         store.send(.navigateToChild3)
       } label: {
-        Text("Navigate to child 2")
+        Text("Navigate to child 3")
       }
     }
     .scrollContentBackground(.hidden)

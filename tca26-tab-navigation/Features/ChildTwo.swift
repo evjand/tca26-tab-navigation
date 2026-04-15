@@ -4,6 +4,7 @@ import SwiftUI
 @Feature struct ChildTwo {
   struct State {
     var title: String
+    @StoreTaskID var task // StoreTaskID + onChange = loop?
   }
   
   enum Action {
@@ -22,6 +23,9 @@ import SwiftUI
       case .navigateToChild3:
         try! store.post(key: NavigationEvent.self, value: .child3(.init(title: "3 from 2")))
       }
+    }
+    .onChange(of: store.title) { oldValue, state in
+      // Looks like onChange is needed for loop
     }
   }
 }
