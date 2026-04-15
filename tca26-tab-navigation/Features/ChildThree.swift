@@ -16,11 +16,17 @@ import SwiftUI
     Update { state, action in
       switch action {
       case .navigateToChild1:
-        try! store.post(key: NavigationEvent.self, value: .child1(.init(title: "1 from 3")))
+        store.addTask {
+          try store.post(key: NavigationEvent.self, value: .child1(.init(title: "1 from 3")))
+        }
       case .navigateToChild2:
-        try! store.post(key: NavigationEvent.self, value: .child2(.init(title: "2 from 3")))
+        store.addTask {
+          try store.post(key: NavigationEvent.self, value: .child1(.init(title: "2 from 3")))
+        }
       case .navigateToChild3:
-        try! store.post(key: NavigationEvent.self, value: .child3(.init(title: "3 from 3")))
+        store.addTask {
+          try store.post(key: NavigationEvent.self, value: .child1(.init(title: "3 from 3")))
+        }
       }
     }
   }
