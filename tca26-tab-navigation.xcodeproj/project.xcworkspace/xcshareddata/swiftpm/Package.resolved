@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/combine-schedulers",
       "state" : {
-        "revision" : "fd16d76fd8b9a976d88bfb6cacc05ca8d19c91b6",
-        "version" : "1.1.0"
+        "revision" : "dcccb979a2183b8df3334237e3dc1ae2b4116a86",
+        "version" : "1.2.0"
       }
     },
     {
@@ -70,7 +70,7 @@
       "location" : "https://github.com/pointfreeco/swift-debug-snapshots",
       "state" : {
         "branch" : "main",
-        "revision" : "9e2831602260874e19482a1b36e70a35d69dddfc"
+        "revision" : "d76b8e8fcd54fc83b092788d7f7a002c1fed2e77"
       }
     },
     {
@@ -79,7 +79,7 @@
       "location" : "https://github.com/pointfreeco/swift-dependencies",
       "state" : {
         "branch" : "26",
-        "revision" : "6f4e48611cf20f0ae7255265890cee6271cc89f3"
+        "revision" : "929e0e2a83032fa50119457ae2963ac6eb313e69"
       }
     },
     {
@@ -133,7 +133,7 @@
       "location" : "https://github.com/pointfreeco/tca26",
       "state" : {
         "branch" : "main",
-        "revision" : "e1bb57a33af14e725be9a236aed1f419a711a333"
+        "revision" : "0f986e70d852b2e50249883e3a444ea74d67d529"
       }
     },
     {
